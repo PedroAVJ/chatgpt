@@ -1,0 +1,48 @@
+{
+  "name": "chatgpt",
+  "version": "0.2.5",
+  "description": "Work with the merged macOS ChatGPT desktop host: Pro Oracle reviews, automations, read-only bundle forensics, and explicit patch or restore workflows.",
+  "author": {
+    "name": "PedroAVJ",
+    "url": "https://github.com/PedroAVJ"
+  },
+  "homepage": "https://github.com/PedroAVJ/chatgpt",
+  "repository": "https://github.com/PedroAVJ/chatgpt",
+  "license": "MIT",
+  "keywords": [
+    "chatgpt",
+    "openai",
+    "codex",
+    "macos",
+    "automations",
+    "oracle",
+    "gpt-5-pro",
+    "pro-mode",
+    "electron",
+    "asar",
+    "feature-flags"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ChatGPT",
+    "shortDescription": "Pro Oracle, automations, internals, and patching",
+    "longDescription": "Work with the merged macOS ChatGPT desktop application that hosts both ChatGPT and Codex: ask the visibly selected ChatGPT Pro mode for independent reviews, inspect authoritative automation state, investigate feature gates without modifying the app, and patch or restore the shared Electron bundle only when explicitly requested.",
+    "developerName": "PedroAVJ",
+    "category": "AI",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "brandColor": "#10A37F",
+    "composerIcon": "./assets/chatgpt-plugin.svg",
+    "logo": "./assets/chatgpt-plugin.svg",
+    "screenshots": [],
+    "defaultPrompt": [
+      "Ask the GPT-5 Pro Oracle for an independent opinion",
+      "How does the ChatGPT desktop app store this automation?",
+      "Does this ChatGPT build contain Pro mode or this feature?",
+      "Inspect the merged ChatGPT and Codex desktop bundle"
+    ]
+  }
+}

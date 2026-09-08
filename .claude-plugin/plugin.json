@@ -1,0 +1,26 @@
+{
+  "name": "chatgpt",
+  "version": "0.2.5",
+  "description": "Work with the merged macOS ChatGPT desktop host: Pro Oracle reviews, automations, read-only bundle forensics, and explicit patch or restore workflows.",
+  "author": {
+    "name": "PedroAVJ",
+    "url": "https://github.com/PedroAVJ"
+  },
+  "homepage": "https://github.com/PedroAVJ/chatgpt",
+  "repository": "https://github.com/PedroAVJ/chatgpt",
+  "license": "MIT",
+  "keywords": [
+    "chatgpt",
+    "openai",
+    "codex",
+    "macos",
+    "automations",
+    "oracle",
+    "gpt-5-pro",
+    "pro-mode",
+    "electron",
+    "asar",
+    "feature-flags"
+  ],
+  "skills": "./skills/"
+}
