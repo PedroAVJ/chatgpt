@@ -7,7 +7,7 @@ import test from "node:test";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const expected = {
   "name": "chatgpt",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "url": "https://github.com/PedroAVJ/chatgpt",
   "dependencies": []
 };
@@ -44,19 +44,19 @@ test("standalone plugin metadata is synchronized", async () => {
   assert.equal(pkg.repository.url, "git+" + expected.url + ".git");
 });
 
-test("oracle fails closed around the visible Pro mode", async () => {
-  const oracle = await readFile(join(root, "skills", "oracle", "SKILL.md"), "utf8");
-  assert.match(oracle, /label includes `Pro`/);
-  assert.match(oracle, /Never substitute Standard, Thinking, Instant/);
-  assert.match(oracle, /visible UI label verifies the selected/);
-  assert.match(oracle, /agent\.browsers\.get\("iab"\)/);
-  assert.match(oracle, /must not try to control itself/);
-  assert.match(oracle, /Do not fall back to Chrome, Edge/);
+test("gpt-pro fails closed around the visible Pro mode", async () => {
+  const skill = await readFile(join(root, "skills", "gpt-pro", "SKILL.md"), "utf8");
+  assert.match(skill, /label includes `Pro`/);
+  assert.match(skill, /Never substitute Standard, Thinking, Instant/);
+  assert.match(skill, /visible UI label verifies the selected/);
+  assert.match(skill, /agent\.browsers\.get\("iab"\)/);
+  assert.match(skill, /must not try to control itself/);
+  assert.match(skill, /Do not fall back to Chrome, Edge/);
 });
 
-test("oracle preserves active or unverified Pro generation indefinitely", async () => {
-  const oracle = await readFile(join(root, "skills", "oracle", "SKILL.md"), "utf8");
-  const finishContract = oracle.match(
+test("gpt-pro preserves active or unverified Pro generation indefinitely", async () => {
+  const skill = await readFile(join(root, "skills", "gpt-pro", "SKILL.md"), "utf8");
+  const finishContract = skill.match(
     /### Let Pro finish(?<contract>[\s\S]*?)(?=\n1\. Reuse an authenticated)/
   )?.groups?.contract;
 
@@ -93,4 +93,14 @@ test("oracle preserves active or unverified Pro generation indefinitely", async 
 
   assert.match(finishContract, /Only an explicit terminal error/);
   assert.match(finishContract, /preserve that exact live tab/);
+});
+
+test("only the gpt-pro skill ships", async () => {
+  const { readdir } = await import("node:fs/promises");
+  const skills = (await readdir(join(root, "skills"), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name);
+  assert.deepEqual(skills, ["gpt-pro"]);
+  const skill = await readFile(join(root, "skills", "gpt-pro", "SKILL.md"), "utf8");
+  assert.match(skill, /^---\nname: gpt-pro\n/);
 });

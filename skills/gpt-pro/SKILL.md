@@ -1,12 +1,12 @@
 ---
-name: oracle
-description: Ask ChatGPT Pro for a focused independent second opinion through ChatGPT's authenticated in-app browser. Use when the user says ask ChatGPT Pro, ask the GPT-5 Pro Oracle, use both Oracles, or wants the strongest ChatGPT Pro-mode review. Verify the visible Pro selection and fail closed rather than silently using another mode or browser.
+name: gpt-pro
+description: Ask GPT Pro (ChatGPT Pro mode) for a focused independent second opinion through ChatGPT's authenticated in-app browser. Use when the user says ask GPT Pro, ask ChatGPT Pro, or wants the strongest ChatGPT Pro-mode review. Verify the visible Pro selection and fail closed rather than silently using another mode or browser.
 ---
 
-# ChatGPT Pro Oracle
+# GPT Pro
 
 Ask ChatGPT Pro through ChatGPT's authenticated in-app browser. Keep this lane
-independent from Codex's answer and from any Claude Oracle response.
+independent from the host agent's answer and from any other model's response.
 
 ## Ground the question
 
@@ -45,13 +45,13 @@ Use the installed Browser skill through `node_repl` and its bundled
 `browser-client`. The desktop host must not try to control itself through
 Computer Use; that surface is intentionally blocked. Select the in-app browser
 explicitly with `agent.browsers.get("iab")` and read its complete documentation
-before interacting. If `iab` is unavailable, stop and report that ChatGPT Pro
-Oracle was not consulted. Do not fall back to Chrome, Edge, another external
-browser, Computer Use, an API model, or web search.
+before interacting. If `iab` is unavailable, stop and report that GPT Pro was
+not consulted. Do not fall back to Chrome, Edge, another external browser,
+Computer Use, an API model, or web search.
 
 ### Let Pro finish
 
-Pro is an intentionally slow, last-resort Oracle and may take arbitrarily long.
+Pro is an intentionally slow, last-resort reviewer and may take arbitrarily long.
 There is no agent-side timeout. Treat generation as active whenever the page
 shows `Stop answering`, a thinking, searching, or streaming state, or completion
 cannot yet be verified from fresh page state. Elapsed time is never evidence
@@ -84,10 +84,10 @@ disturbing it.
 3. Inspect the model or mode picker. Select the exact visible option whose
    label includes `Pro`. Read the state again and record the selected label.
 4. If no Pro option is visible, selection fails, or the selection cannot be
-   verified before sending, stop. Report that ChatGPT Pro Oracle was not
-   consulted. Never substitute Standard, Thinking, Instant, another model, a
-   browser session, or an API model.
-5. Enter the grounded prompt and send it. The user's explicit Oracle request
+   verified before sending, stop. Report that GPT Pro was not consulted.
+   Never substitute Standard, Thinking, Instant, another model, a browser
+   session, or an API model.
+5. Enter the grounded prompt and send it. The user's explicit GPT Pro request
    authorizes this ordinary nonsensitive prompt transmission.
 6. Poll fresh state in that same tab until completion is positively verified,
    following the indefinite-wait contract above.
