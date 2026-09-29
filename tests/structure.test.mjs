@@ -7,7 +7,7 @@ import test from "node:test";
 const root = fileURLToPath(new URL("..", import.meta.url));
 const expected = {
   "name": "chatgpt",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "url": "https://github.com/PedroAVJ/chatgpt",
   "dependencies": []
 };

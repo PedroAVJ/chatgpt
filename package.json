@@ -1,6 +1,6 @@
 {
   "name": "@pedroavj/chatgpt",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "private": true,
   "description": "Work with the merged macOS ChatGPT desktop host: Pro Oracle reviews, automations, read-only bundle forensics, and explicit patch or restore workflows.",
   "license": "MIT",
